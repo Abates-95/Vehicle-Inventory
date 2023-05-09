@@ -1,0 +1,25 @@
+footer{
+    bottom: 0px;
+    width: 100%;
+    
+}
+
+.c_right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    border: 6px solid red;
+    border-style: double;
+    width: 25%;
+    height: 45px;
+}
+
+.bottom{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

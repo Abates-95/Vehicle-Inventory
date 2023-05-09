@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="top-line">
+    <div class="top-line-container">
+        <div class="top-line-box">
+            <h1>{{ current_user.email.title().split("@")[0] }}'s Information Page</h1> 
+        </div>
+    </div>
+</section>
+
+<section class="profile">
+    <div class="profile-container">
+        <div class="profile-box">
+            <div class="img2-box">
+                <img id="img2" src="../../static/images/undraw_online_information_re_erks.svg" alt="">
+            </div>
+            <div class="info-box">
+                <h3>Peek below to see your info!</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Email: {{ current_user.email }}</li>
+                    <li class="list-group-item" id="token_"  >Token: {{ current_user.token }} </li> 
+                </ul> 
+            </div>
+        </div>
+    </div>
+</section>        
+{% endblock %}
