@@ -44,16 +44,20 @@ def get_single_car(current_car_token, id):
 @api.route('/cars/<id>', methods = ['POST', 'PUT'])
 @token_required
 def update_car(current_car_token, id):
+    # Query database for a book with specific ID
     car = Car.query.get(id)
-    car.classification = request.json['classification']
-    car.make = request.json['make']
-    car.model = request.json['model']
-    car.year = request.json['year']
-    car.doors = request.json['doors']
-    car.color = request.json['color']
-    car.car_token = current_car_token.token
+    # Update book data with retrieved data from request object
+    fields_to_update = request.json.keys()
 
+    for field in fields_to_update:
+        if hasattr(car, field):
+            setattr(car, field, request.json[field])
+            car.car_token = current_car_token.token
+
+    # Commit changes to database
     db.session.commit()
+    
+    # Serialize updated book object and return as JSON response
     response = car_schema.dump(car)
     return jsonify(response)
 
